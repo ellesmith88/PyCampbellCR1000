@@ -339,7 +339,7 @@ class PakBus(object):
         msg = {'MsgType': None, 'TranNbr': None, 'raw': None}
 
         # decode PakBus header
-        rawhdr = struct.unpack(str('>4H'), data[0:8])  # raw header bits
+        rawhdr = struct.unpack('>4H', data[0:8])  # raw header bits
         hdr['LinkState'] = rawhdr[0] >> 12
         hdr['DstPhyAddr'] = rawhdr[0] & 0x0FFF
         hdr['ExpMoreCode'] = (rawhdr[1] & 0xC000) >> 14
