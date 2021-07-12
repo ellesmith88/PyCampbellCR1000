@@ -116,6 +116,31 @@ Or you can get the `source code from github
   $ python setup.py install
 
 
+Development
+-----------
+Clone the repository::
+
+  $ git clone https://github.com/LionelDarras/PyCampbellCR1000.git
+  $ cd PyCampbellCR1000
+
+Create a virtual environment and activate it::
+
+  $ python3 -m venv venv
+  $ source venv/bin/activate
+
+Install the package in develop mode::
+
+  $ pip install -e .
+
+Install the dev requirements::
+
+  $ pip install -r requirements_dev.txt
+
+To run the tests::
+
+  $ python -m pytest pycampbellcr1000/tests
+
+
 Documentation
 -------------
 

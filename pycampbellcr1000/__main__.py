@@ -48,17 +48,19 @@ def getprogstat_cmd(args, device):
     '''Getprogstat command.'''
     data = device.getprogstat()
     for key in data.keys():
-        print("%s : %s" % (key, ("%s" % data[key]).strip('\r\n')))
+        if isinstance(data[key], bytes):
+            value = data[key].decode('utf-8')
+        else:
+            value = data[key]
+        print("%s : %s" % (key, ("%s" % value).strip('\r\n')))
 
 
 def getsettings_cmd(args, device):
     '''Getsettings command.'''
-    args.delim = args.delim.decode("string-escape")
     data = device.settings
     for item in data:
         item["SettingValue"] = repr(item["SettingValue"])
     args.output.write("%s" % data.to_csv(delimiter=args.delim))
-
 
 def listfiles_cmd(args, device):
     '''Listfiles command.'''
@@ -68,7 +70,7 @@ def listfiles_cmd(args, device):
 
 def getfile_cmd(args, device):
     '''Getfile command.'''
-    args.output.write("%s" % device.getfile(args.filename.decode('utf-8')))
+    args.output.write("%s" % device.getfile(args.filename))
 
 
 def listtables_cmd(args, device):
@@ -202,7 +204,7 @@ def main():
                                help='Retrieve the datalogger settings.',
                                func=getsettings_cmd)
     subparser.add_argument('--output', action='store', default=stdout,
-                           type=argparse.FileType('w', 0),
+                           type=argparse.FileType('w'),
                            help='Filename where output is written')
     subparser.add_argument('--delim', action='store', default=",",
                            help='CSV char delimiter')
@@ -220,7 +222,7 @@ def main():
     subparser.add_argument('filename', action="store",
                            help="Filename to be downloaded.")
     subparser.add_argument('output', action='store',
-                           type=argparse.FileType('w', 0),
+                           type=argparse.FileType('w'),
                            help='Filename where output is written')
 
     # listtables command
@@ -239,7 +241,7 @@ def main():
     subparser.add_argument('table', action="store",
                            help="The table name used for data collection")
     subparser.add_argument('output', action='store',
-                           type=argparse.FileType('w', 0),
+                           type=argparse.FileType('w'),
                            help='Filename where output is written')
     subparser.add_argument('--start', help='The beginning datetime record '
                                            '(like : "%s")' % NOW)
