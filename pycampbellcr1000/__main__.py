@@ -60,6 +60,7 @@ def getsettings_cmd(args, device):
     data = device.settings
     for item in data:
         item["SettingValue"] = repr(item["SettingValue"])
+
     args.output.write("%s" % data.to_csv(delimiter=args.delim))
 
 def listfiles_cmd(args, device):

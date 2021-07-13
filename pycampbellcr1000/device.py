@@ -127,6 +127,7 @@ class CR1000(object):
             settings.append(Dict(dict(item)))
         return settings
 
+
     def getfile(self, filename):
         '''Get the file content from the datalogger.'''
         LOGGER.info('Try get file')
@@ -179,7 +180,7 @@ class CR1000(object):
 
     def list_tables(self):
         '''List the tables available in the datalogger.'''
-        return [item['Header']['TableName'] for item in self.table_def]
+        return [item['Header']['TableName'].decode('utf-8') for item in self.table_def]
 
     def _collect_data(self, tablename, start_date=None, stop_date=None):
         '''Collect fragment data from `tablename` from `start_date` to
@@ -261,8 +262,9 @@ class CR1000(object):
                         new_rec = Dict()
                         new_rec["Datetime"] = item['TimeOfRec']
                         new_rec["RecNbr"] = item['RecNbr']
+
                         for key in item['Fields']:
-                            new_rec["%s" % key] = item['Fields'][key]
+                            new_rec["%s" % key.decode('utf-8')] = item['Fields'][key]
                         records.append(new_rec)
 
             if records:
