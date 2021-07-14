@@ -26,6 +26,7 @@ except:
 
 REQUIREMENTS = [
     'pylink',
+    'pandas'
 ]
 
 if sys.version_info < (2, 7):

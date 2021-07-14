@@ -13,6 +13,7 @@ import os
 import argparse
 
 from datetime import datetime
+import pandas as pd
 
 # Make sure the logger is configured early:
 from . import VERSION
@@ -61,7 +62,9 @@ def getsettings_cmd(args, device):
     for item in data:
         item["SettingValue"] = repr(item["SettingValue"])
 
-    args.output.write("%s" % data.to_csv(delimiter=args.delim))
+    df = pd.DataFrame(data)
+    pd.set_option("display.max_rows", None)
+    print(df)
 
 def listfiles_cmd(args, device):
     '''Listfiles command.'''
