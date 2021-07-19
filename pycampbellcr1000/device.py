@@ -205,7 +205,7 @@ class CR1000(object):
                 tablenbr = i + 1
                 break
         if tablenbr is None:
-            raise StandardError('table %s not found' % tablename)
+            raise Exception('table %s not found' % tablename)
         # Get table definition signature
         tabledefsig = tabledef[tablenbr - 1]['Signature']
 
