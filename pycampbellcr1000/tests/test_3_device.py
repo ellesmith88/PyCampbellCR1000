@@ -87,7 +87,6 @@ class TestDevice:
         tables = device.list_tables()
         if len(tables) > 0:
             for table in tables:
-                table = table.decode('utf-8')
                 self.get_data(device, table)
                 self.get_data_generator(device, table)
 
@@ -95,4 +94,4 @@ class TestDevice:
         device = CR1000.from_url(url, 1)
         osversion = device.getprogstat()['OSVer'].decode('utf-8')
         osversion = osversion.split(".")[0]
-        assert (osversion == "CR800" or osversion == "CR1000")
+        assert (osversion == "CR800" or osversion == "CR1000" or osversion == "CR3000")

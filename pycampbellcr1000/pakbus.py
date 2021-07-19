@@ -273,7 +273,7 @@ class PakBus(object):
                 enc = struct.pack(fmt_, str(value))
             elif type_ == 'NSec':
                 # special handling: NSec time
-                enc = struct.pack(str(fmt), value[0], value[1])
+                enc = struct.pack(str(fmt), int(value[0]), int(value[1]))
             else:
                 # default encoding scheme
                 enc = struct.pack(str(fmt), value)
