@@ -264,7 +264,12 @@ class CR1000(object):
                         new_rec["RecNbr"] = item['RecNbr']
 
                         for key in item['Fields']:
-                            new_rec["%s" % key.decode('utf-8')] = item['Fields'][key]
+                            entry = item['Fields'][key]
+
+                            if isinstance(entry, bytes):
+                                entry = entry.decode().strip('\x00')
+
+                            new_rec["%s" % key.decode('utf-8')] = entry
                         records.append(new_rec)
 
             if records:
