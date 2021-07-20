@@ -136,6 +136,14 @@ Install the dev requirements::
 
   $ pip install -r requirements_dev.txt
 
+
+Running tests
+-------------
+
+Update the file ``pytest.ini`` to use the url for your logger.
+
+**Note** Running the tests will set the time on your logger to the time on your system. Comment out this test (``test_settime``) in ``pycampbellcr1000/tests/test_3_device.py`` if you do not want it to run.
+
 To run the tests::
 
   $ python -m pytest pycampbellcr1000/tests
