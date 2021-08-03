@@ -111,7 +111,7 @@ Or you can get the `source code from github
 
 ::
 
-  $ git clone https://github.com/LionelDarras/PyCampbellCR1000.git
+  $ git clone https://github.com/ellesmith88/PyCampbellCR1000.git
   $ cd PyCampbellCR1000
   $ python setup.py install
 
@@ -120,7 +120,7 @@ Development
 -----------
 Clone the repository::
 
-  $ git clone https://github.com/LionelDarras/PyCampbellCR1000.git
+  $ git clone https://github.com/ellesmith88/PyCampbellCR1000.git
   $ cd PyCampbellCR1000
 
 Create a virtual environment and activate it::
