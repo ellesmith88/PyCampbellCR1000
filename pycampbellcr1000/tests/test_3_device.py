@@ -32,7 +32,7 @@ class TestDevice:
 
     def test_settime(self, url):
         device = CR1000.from_url(url, 1)
-        now = datetime.now().replace(second=10, microsecond=0)
+        now = datetime.utcnow().replace(second=10, microsecond=0)
         device_time = device.settime(now)
         assert device_time.second in (10, 11, 12)
         assert now == device_time.replace(second=10)
@@ -40,7 +40,7 @@ class TestDevice:
         tomorrow = now + timedelta(days=1)
         assert lastday == device.settime(lastday).replace(second=10)
         assert tomorrow == device.settime(tomorrow).replace(second=10)
-        device.settime(datetime.now())
+        device.settime(datetime.utcnow())
 
     def test_settings(self, url):
         device = CR1000.from_url(url, 1)
