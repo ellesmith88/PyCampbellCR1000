@@ -148,6 +148,8 @@ To run the tests::
 
   $ python -m pytest pycampbellcr1000/tests
 
+The tests sometimes fail if the logger doesn't respond, due to it being queried lots of times in a row. Try running the tests a few times if there are failures to see if this is the case.
+
 
 Documentation
 -------------

@@ -23,8 +23,8 @@ from .device import CR1000
 from .utils import csv_to_dict, ListDict
 
 
-NOW = datetime.now().strftime("%Y-%m-%d %H:%M")
-NOWWITHSECONDS = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+NOW = datetime.utcnow().strftime("%Y-%m-%d %H:%M")
+NOWWITHSECONDS = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
 
 
 def gettime_cmd(args, device):

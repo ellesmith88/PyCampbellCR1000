@@ -75,8 +75,8 @@ class TestDevice:
                 rec = next_rec
 
     def get_data(self, device, table):
-        start_date = datetime.now() - timedelta(days=2)
-        stop_date = datetime.now() - timedelta(days=1, hours=23)
+        start_date = datetime.utcnow() - timedelta(days=2)
+        stop_date = datetime.utcnow() - timedelta(days=1, hours=23)
         records = device.get_data(table, start_date, stop_date)
         if len(records) > 0:
             for item in records:
@@ -86,9 +86,10 @@ class TestDevice:
         device = CR1000.from_url(url, 1)
         tables = device.list_tables()
         if len(tables) > 0:
-            for table in tables:
-                self.get_data(device, table)
-                self.get_data_generator(device, table)
+            # checking all tabless queries the logger to many times and the test will fail
+            # only test with the first table
+            self.get_data(device, tables[0])
+            self.get_data_generator(device, tables[0])
 
     def test_getprogstat(self, url):
         device = CR1000.from_url(url, 1)
