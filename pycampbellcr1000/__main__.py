@@ -80,7 +80,7 @@ def getfile_cmd(args, device):
 def listtables_cmd(args, device):
     '''Listtables command.'''
     for tablename in device.list_tables():
-        print(tablename.decode('utf-8'))
+        print(tablename)
 
 
 def getdata_cmd(args, device, header=True, exclude_first=False):
