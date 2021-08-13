@@ -92,27 +92,21 @@ Features
 Installation
 ------------
 
-You can install, upgrade, uninstall PyCampbellCR1000 with these commands
-
-::
-
-    $ pip install pycampbellcr1000
-    $ pip install --upgrade pycampbellcr1000
-    $ pip uninstall pycampbellcr1000
-
-Or if you don't have pip
-
-::
-
-  $ easy_install pycampbellcr1000
-
-Or you can get the `source code from github
-<https://github.com/LionelDarras/PyCampbellCR1000>`_.
+Get the `source code from github
+<https://github.com/ellesmith88/PyCampbellCR1000>`_.
 
 ::
 
   $ git clone https://github.com/ellesmith88/PyCampbellCR1000.git
   $ cd PyCampbellCR1000
+  
+Create a virtual environment and activate it::
+
+  $ python3 -m venv venv
+  $ source venv/bin/activate
+
+Install::
+
   $ python setup.py install
 
 
